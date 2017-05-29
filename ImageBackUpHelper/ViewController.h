@@ -11,5 +11,8 @@
 @interface ViewController : UIViewController
 
 
+- (void)btnPressed:(UIButton *)sender;
+
+
 @end
 
