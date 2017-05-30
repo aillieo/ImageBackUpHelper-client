@@ -10,9 +10,13 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)btnCheckPressed:(id)sender;
 
-- (void)btnPressed:(UIButton *)sender;
+- (IBAction)btnSelectPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *textServer;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelState;
 
 @end
 
