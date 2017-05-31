@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AFNetworking.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    AFNetworkReachabilityManager *afNetworkReachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    [afNetworkReachabilityManager startMonitoring];
+
+    [afNetworkReachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:{
+                _labelState.text = @"no network";
+                break;
+            }
+            case AFNetworkReachabilityStatusReachableViaWiFi:{
+                _labelState.text = @"use wifi";
+                break;
+            }
+                
+            case AFNetworkReachabilityStatusReachableViaWWAN:{
+                _labelState.text = @"use cellular data";
+                break;
+            }
+            default:
+                break;
+        }
+    }];
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
