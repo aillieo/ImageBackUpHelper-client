@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "AFNetworking.h"
+#import "AFHttpSessionManager.h"
+#import "ImageSelectViewController.h"
 
 @interface ViewController ()
 
@@ -55,10 +57,24 @@
 - (IBAction)btnCheckPressed:(id)sender
 {
     _labelState.text = @"connecting";
+    
+    NSString *URLString = @"localhost:8080";
+    NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
+    [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:parameters error:nil];
+    
 }
 - (IBAction)btnSelectPressed:(id)sender
 {
     NSLog(@"select");
+    
+    ImageSelectViewController *view = [ImageSelectViewController new];
+    
+    if(self.navigationController != nil)
+    {
+        NSLog(@"navigationController");
+    }
+    [self.navigationController pushViewController:view animated:YES];
+    
 }
 
 @end
