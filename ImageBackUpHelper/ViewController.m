@@ -58,9 +58,14 @@
 {
     _labelState.text = @"connecting";
     
-    NSString *URLString = @"localhost:8080";
-    NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
-    [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:parameters error:nil];
+    AFHTTPSessionManager *session = [AFHTTPSessionManager new];
+    [session GET:@"http://127.0.0.1:8080" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"下载的进度");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        NSLog(@"请求成功:%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败:%@", error);
+    }];
     
 }
 - (IBAction)btnSelectPressed:(id)sender
