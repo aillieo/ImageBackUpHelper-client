@@ -58,13 +58,20 @@
 {
     _labelState.text = @"connecting";
     
-    AFHTTPSessionManager *session = [AFHTTPSessionManager new];
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    
+    //session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    
+    //session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     [session GET:@"http://127.0.0.1:8080" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        NSLog(@"下载的进度");
+        NSLog(@"GET downloadProgress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-        NSLog(@"请求成功:%@", responseObject);
+        NSLog(@"GET success:%@", responseObject);
+        _labelState.text = @"connected";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败:%@", error);
+        NSLog(@"GET failure:%@", error);
+        _labelState.text = @"connect error";
     }];
     
 }
@@ -74,10 +81,6 @@
     
     ImageSelectViewController *view = [ImageSelectViewController new];
     
-    if(self.navigationController != nil)
-    {
-        NSLog(@"navigationController");
-    }
     [self.navigationController pushViewController:view animated:YES];
     
 }
