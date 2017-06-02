@@ -77,12 +77,9 @@
 }
 - (IBAction)btnSelectPressed:(id)sender
 {
-    NSLog(@"select");
-    
     ImageSelectViewController *view = [ImageSelectViewController new];
     
     [self.navigationController pushViewController:view animated:YES];
-    
 }
 
 @end

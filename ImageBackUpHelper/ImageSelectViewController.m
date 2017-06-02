@@ -73,6 +73,7 @@
 
 - (void)pickAssets:(id)sender
 {
+
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -152,6 +153,8 @@
     
     self.assets = [NSMutableArray arrayWithArray:assets];
     [self.tableView reloadData];
+    
+    NSLog(@"Selected %lu photo(s)",(unsigned long)self.assets.count);
 }
 
 @end
