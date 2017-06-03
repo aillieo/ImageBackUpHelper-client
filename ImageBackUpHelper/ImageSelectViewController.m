@@ -24,8 +24,7 @@
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(clearAssets:)];
-    
+                                    action:@selector(pickEnd:)];
     
     UIBarButtonItem *addButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)
@@ -51,6 +50,15 @@
     self.requestOptions = [[PHImageRequestOptions alloc] init];
     self.requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
     self.requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+}
+
+- (void)pickEnd:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(passAssets:)]) { // 如果协议响应了sendValue:方法
+        NSString* str;
+        str = [NSString stringWithFormat:@"Selected %lu photo(s)",(unsigned long)self.assets.count];
+        [_delegate passAssets:str]; // 通知执行协议方法
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

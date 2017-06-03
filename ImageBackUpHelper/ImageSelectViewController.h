@@ -10,11 +10,17 @@
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
 #import <CTAssetsPickerController/CTAssetsPageViewController.h>
 
+@protocol ImageSelectViewControllerDelegate // 代理传值方法
+- (void)passAssets:(NSString *)value;
+@end
+
 @interface ImageSelectViewController : UITableViewController
 <CTAssetsPickerControllerDelegate>
 
 @property (nonatomic, copy) NSArray *assets;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) PHImageRequestOptions *requestOptions;
+
+@property (weak, nonatomic) id delegate;
 
 @end

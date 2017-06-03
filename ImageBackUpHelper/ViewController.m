@@ -11,7 +11,7 @@
 #import "AFHttpSessionManager.h"
 #import "ImageSelectViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <ImageSelectViewControllerDelegate>
 
 @end
 
@@ -79,7 +79,14 @@
 {
     ImageSelectViewController *view = [ImageSelectViewController new];
     
+    [view setDelegate:self];
+    
     [self.navigationController pushViewController:view animated:YES];
+}
+
+- (void)passAssets:(NSString *)value
+{
+    _labelState.text = value;
 }
 
 @end
