@@ -11,7 +11,7 @@
 #import <CTAssetsPickerController/CTAssetsPageViewController.h>
 
 @protocol ImageSelectViewControllerDelegate // 代理传值方法
-- (void)passAssets:(NSString *)value;
+- (void)passAssets:(NSArray *)assets;
 @end
 
 @interface ImageSelectViewController : UITableViewController

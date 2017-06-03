@@ -75,6 +75,7 @@
     }];
     
 }
+
 - (IBAction)btnSelectPressed:(id)sender
 {
     ImageSelectViewController *view = [ImageSelectViewController new];
@@ -84,9 +85,17 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 
-- (void)passAssets:(NSString *)value
-{
-    _labelState.text = value;
+- (IBAction)btnUploadPressed:(id)sender {
+    
+    NSLog(@"upload");
+    
 }
+
+- (void)passAssets:(NSArray *)assets
+{
+    self.assets = assets;
+    _labelState.text = [NSString stringWithFormat:@"Will upload %lu photo(s)",(unsigned long)self.assets.count];
+}
+
 
 @end

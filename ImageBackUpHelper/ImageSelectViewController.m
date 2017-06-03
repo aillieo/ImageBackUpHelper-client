@@ -24,7 +24,8 @@
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(pickEnd:)];
+                                    //action:@selector(pickEnd:)];
+                                    action:@selector(clearAssets:)];
     
     UIBarButtonItem *addButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)
@@ -54,10 +55,8 @@
 
 - (void)pickEnd:(id)sender
 {
-    if ([_delegate respondsToSelector:@selector(passAssets:)]) { // 如果协议响应了sendValue:方法
-        NSString* str;
-        str = [NSString stringWithFormat:@"Selected %lu photo(s)",(unsigned long)self.assets.count];
-        [_delegate passAssets:str]; // 通知执行协议方法
+    if ([_delegate respondsToSelector:@selector(passAssets:)]) {
+        [_delegate passAssets:self.assets];
     }
 }
 
@@ -161,8 +160,6 @@
     
     self.assets = [NSMutableArray arrayWithArray:assets];
     [self.tableView reloadData];
-    
-    NSLog(@"Selected %lu photo(s)",(unsigned long)self.assets.count);
 }
 
 @end
