@@ -24,8 +24,8 @@
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    //action:@selector(pickEnd:)];
-                                    action:@selector(clearAssets:)];
+                                    action:@selector(pickEnd:)];
+                                    //action:@selector(clearAssets:)];
     
     UIBarButtonItem *addButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)

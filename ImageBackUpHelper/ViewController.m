@@ -89,6 +89,58 @@
     
     NSLog(@"upload");
     
+    NSString *urlString = @"http://127.0.0.1:8080";
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:@"name" forKey:@"name"];
+
+    
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+
+    
+    NSURLSessionDataTask *task = [session POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        
+        
+        __block NSData *data;
+        PHAsset* asset = self.assets.firstObject;
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.version = PHImageRequestOptionsVersionCurrent;
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+            options.synchronous = YES;
+            [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                              options:options
+                                                        resultHandler:
+             ^(NSData *imageData,
+               NSString *dataUTI,
+               UIImageOrientation orientation,
+               NSDictionary *info) {
+                 data = [NSData dataWithData:imageData];
+             }];
+        }
+     
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat =@"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+        
+        [formData appendPartWithFileData:data
+                                    name:@"file"
+                                fileName:fileName
+                                mimeType:@"image/jpeg"];
+        
+
+        
+    } progress:^(NSProgress *_Nonnull uploadProgress) {
+        NSLog(@"POST uploadProgress:%@", uploadProgress);
+    } success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
+        NSLog(@"POST success:%@", responseObject);
+    } failure:^(NSURLSessionDataTask *_Nullable task, NSError * _Nonnull error) {
+        NSLog(@"POST failure:%@", error);
+    }];
+    
 }
 
 - (void)passAssets:(NSArray *)assets
@@ -96,6 +148,5 @@
     self.assets = assets;
     _labelState.text = [NSString stringWithFormat:@"Will upload %lu photo(s)",(unsigned long)self.assets.count];
 }
-
 
 @end
