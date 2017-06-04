@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFHttpSessionManager.h"
 #import "ImageSelectViewController.h"
+#import "SettingViewController.h"
 
 @interface HomeViewController () <ImageSelectViewControllerDelegate>
 
@@ -21,6 +22,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    UIBarButtonItem *settingButton =
+    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil)
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(btnSettingPressed:)];
+    
+    UIBarButtonItem *space =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    self.toolbarItems = @[space, settingButton];
+    
+    // Network
     AFNetworkReachabilityManager *afNetworkReachabilityManager = [AFNetworkReachabilityManager sharedManager];
     [afNetworkReachabilityManager startMonitoring];
 
@@ -54,6 +70,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
 - (IBAction)btnCheckPressed:(id)sender
 {
     _labelState.text = @"connecting";
@@ -82,12 +110,28 @@
     
     [view setDelegate:self];
     
+    if (self.assets) {
+        view.assets = self.assets;
+    }
+    
+    [self.navigationController pushViewController:view animated:YES];
+}
+
+- (IBAction)btnSettingPressed:(id)sender
+{
+    SettingViewController *view = [SettingViewController new];
+    
     [self.navigationController pushViewController:view animated:YES];
 }
 
 - (IBAction)btnUploadPressed:(id)sender {
     
     NSLog(@"upload");
+    
+    if(self.assets == nil || self.assets.count == 0)
+    {
+        return;
+    }
     
     NSString *urlString = @"http://127.0.0.1:8080";
     

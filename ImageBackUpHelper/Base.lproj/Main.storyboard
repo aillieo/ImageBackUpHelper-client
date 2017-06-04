@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,25 +37,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKW-fh-zSu">
-                                <rect key="frame" x="28" y="106.5" width="72" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="nvR-nO-7jy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHq-wO-7TO">
-                                <rect key="frame" x="139" y="262.5" width="98" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="jAv-TF-78o"/>
-                                </constraints>
-                                <state key="normal" title="CheckServer"/>
-                                <connections>
-                                    <action selector="btnCheckPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GAN-7p-L42"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ServerState" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-ZK-nFX">
                                 <rect key="frame" x="67" y="186" width="240" height="20.5"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -69,14 +49,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.100" borderStyle="roundedRect" placeholder="please input server here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBG-hM-fYK">
-                                <rect key="frame" x="119" y="101" width="176.5" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n03-zW-j8a">
-                                <rect key="frame" x="163" y="488" width="50" height="30"/>
+                                <rect key="frame" x="162" y="402" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload"/>
                                 <connections>
@@ -84,7 +58,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-8l-JIZ">
-                                <rect key="frame" x="132" y="422" width="112" height="30"/>
+                                <rect key="frame" x="131" y="336" width="112" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="SelectPhotos"/>
                                 <connections>
@@ -94,22 +68,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QBG-hM-fYK" firstAttribute="leading" secondItem="wKW-fh-zSu" secondAttribute="trailing" constant="19" id="0LF-dN-gQt"/>
-                            <constraint firstItem="wKW-fh-zSu" firstAttribute="centerY" secondItem="QBG-hM-fYK" secondAttribute="centerY" id="64m-sh-KTS"/>
-                            <constraint firstItem="7fa-ZK-nFX" firstAttribute="top" secondItem="QBG-hM-fYK" secondAttribute="bottom" constant="55" id="F8I-6v-1Bl"/>
-                            <constraint firstItem="wKW-fh-zSu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="FHk-1X-nhx"/>
-                            <constraint firstItem="fHq-wO-7TO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NQ1-U4-y9E"/>
-                            <constraint firstItem="QBG-hM-fYK" firstAttribute="centerY" secondItem="wKW-fh-zSu" secondAttribute="centerY" id="T06-Sy-RXY"/>
                             <constraint firstItem="7fa-ZK-nFX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZUe-D7-FLr"/>
                             <constraint firstItem="7fa-ZK-nFX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="de5-Qo-Gox"/>
-                            <constraint firstItem="fHq-wO-7TO" firstAttribute="top" secondItem="7fa-ZK-nFX" secondAttribute="bottom" constant="56" id="ob2-kT-kMv"/>
-                            <constraint firstItem="QBG-hM-fYK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="qgI-do-4bY"/>
+                            <constraint firstItem="7fa-ZK-nFX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="122" id="nkm-xc-5Ry"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lg0-bj-aWw"/>
                     <connections>
                         <outlet property="labelState" destination="7fa-ZK-nFX" id="Ori-Re-vCX"/>
-                        <outlet property="textServer" destination="QBG-hM-fYK" id="7Pl-Z8-ksQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

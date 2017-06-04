@@ -10,8 +10,6 @@
 
 @interface HomeViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *textServer;
-
 @property (weak, nonatomic) IBOutlet UILabel *labelState;
 
 @property (nonatomic, copy) NSArray *assets;

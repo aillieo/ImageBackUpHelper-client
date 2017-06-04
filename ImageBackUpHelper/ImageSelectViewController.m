@@ -24,8 +24,7 @@
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(pickEnd:)];
-                                    //action:@selector(clearAssets:)];
+                                    action:@selector(clearAssets:)];
     
     UIBarButtonItem *addButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)
@@ -42,7 +41,10 @@
     
     
     // init properties
-    self.assets = [[NSMutableArray alloc] init];
+    if(self.assets == nil)
+    {
+        self.assets = [[NSMutableArray alloc] init];
+    }
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
@@ -70,6 +72,10 @@
 {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
+    
+    if ([_delegate respondsToSelector:@selector(passAssets:)]) {
+        [_delegate passAssets:self.assets];
+    }
 }
 
 - (void)clearAssets:(id)sender
@@ -89,6 +95,8 @@
             
             // set delegate
             picker.delegate = self;
+            
+            picker.selectedAssets = [NSMutableArray arrayWithArray:self.assets];
             
             // to present picker as a form sheet in iPad
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
