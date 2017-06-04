@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  HomeViewController.h
 //  ImageBackUpHelper
 //
 //  Created by yiyiran on 17/5/28.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *textServer;
 

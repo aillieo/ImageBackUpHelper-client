@@ -1,21 +1,21 @@
 //
-//  ViewController.m
+//  HomeViewController.m
 //  ImageBackUpHelper
 //
 //  Created by yiyiran on 17/5/28.
 //  Copyright © 2017年 AillieoTech. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HomeViewController.h"
 #import "AFNetworking.h"
 #import "AFHttpSessionManager.h"
 #import "ImageSelectViewController.h"
 
-@interface ViewController () <ImageSelectViewControllerDelegate>
+@interface HomeViewController () <ImageSelectViewControllerDelegate>
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

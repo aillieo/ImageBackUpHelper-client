@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F3DCFAA1EE3EEBF0098AB91 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */; };
 		2F43EA711EDB00990004D90A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA701EDB00990004D90A /* main.m */; };
 		2F43EA741EDB00990004D90A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA731EDB00990004D90A /* AppDelegate.m */; };
-		2F43EA771EDB00990004D90A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA761EDB00990004D90A /* ViewController.m */; };
+		2F43EA771EDB00990004D90A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA761EDB00990004D90A /* HomeViewController.m */; };
 		2F43EA7A1EDB00990004D90A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F43EA781EDB00990004D90A /* Main.storyboard */; };
 		2F43EA7C1EDB00990004D90A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F43EA7B1EDB00990004D90A /* Assets.xcassets */; };
 		2F43EA7F1EDB00990004D90A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F43EA7D1EDB00990004D90A /* LaunchScreen.storyboard */; };
@@ -88,12 +89,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F3DCFA81EE3EEBF0098AB91 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		2F43EA6C1EDB00990004D90A /* ImageBackUpHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageBackUpHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F43EA701EDB00990004D90A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F43EA721EDB00990004D90A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F43EA731EDB00990004D90A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2F43EA751EDB00990004D90A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2F43EA761EDB00990004D90A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2F43EA751EDB00990004D90A /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		2F43EA761EDB00990004D90A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2F43EA791EDB00990004D90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F43EA7B1EDB00990004D90A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F43EA7E1EDB00990004D90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -274,10 +277,12 @@
 				2F4AC6671EE1B4FB002AA742 /* CTAssetsPickerController */,
 				2F43EA721EDB00990004D90A /* AppDelegate.h */,
 				2F43EA731EDB00990004D90A /* AppDelegate.m */,
-				2F43EA751EDB00990004D90A /* ViewController.h */,
-				2F43EA761EDB00990004D90A /* ViewController.m */,
+				2F43EA751EDB00990004D90A /* HomeViewController.h */,
+				2F43EA761EDB00990004D90A /* HomeViewController.m */,
 				A35B90351EE01AF600BDBEED /* ImageSelectViewController.h */,
 				A35B90331EE01AC100BDBEED /* ImageSelectViewController.m */,
+				2F3DCFA81EE3EEBF0098AB91 /* SettingViewController.h */,
+				2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */,
 				2F43EA781EDB00990004D90A /* Main.storyboard */,
 				2F43EA7B1EDB00990004D90A /* Assets.xcassets */,
 				2F43EA7D1EDB00990004D90A /* LaunchScreen.storyboard */,
@@ -636,7 +641,7 @@
 				A35B8F0E1EE0078A00BDBEED /* UIWebView+AFNetworking.m in Sources */,
 				A35B8F0B1EE0078A00BDBEED /* UIImageView+AFNetworking.m in Sources */,
 				2F4AC6C81EE1B4FC002AA742 /* CTAssetsPageViewController.m in Sources */,
-				2F43EA771EDB00990004D90A /* ViewController.m in Sources */,
+				2F43EA771EDB00990004D90A /* HomeViewController.m in Sources */,
 				A35B8F0A1EE0078A00BDBEED /* UIButton+AFNetworking.m in Sources */,
 				2F43EA741EDB00990004D90A /* AppDelegate.m in Sources */,
 				2FA2EFFD1EDEF7580000B823 /* AFNetworkReachabilityManager.m in Sources */,
@@ -652,6 +657,7 @@
 				2F4AC6CC1EE1B4FC002AA742 /* CTAssetsPickerNoAssetsView.m in Sources */,
 				2F4AC6BA1EE1B4FC002AA742 /* CTAssetCollectionViewController.m in Sources */,
 				2FA2EFFE1EDEF7580000B823 /* AFSecurityPolicy.m in Sources */,
+				2F3DCFAA1EE3EEBF0098AB91 /* SettingViewController.m in Sources */,
 				2F4AC6AF1EE1B4FC002AA742 /* NSBundle+CTAssetsPickerController.m in Sources */,
 				2FA2EFFF1EDEF7580000B823 /* AFURLRequestSerialization.m in Sources */,
 				2F4AC6B51EE1B4FC002AA742 /* PHImageManager+CTAssetsPickerController.m in Sources */,
