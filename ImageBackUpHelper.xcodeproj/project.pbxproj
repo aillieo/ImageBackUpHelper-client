@@ -69,6 +69,7 @@
 		A35B8F0D1EE0078A00BDBEED /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B8F031EE0078A00BDBEED /* UIRefreshControl+AFNetworking.m */; };
 		A35B8F0E1EE0078A00BDBEED /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B8F051EE0078A00BDBEED /* UIWebView+AFNetworking.m */; };
 		A35B90341EE01AC100BDBEED /* ImageSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B90331EE01AC100BDBEED /* ImageSelectViewController.m */; };
+		A3D97C7C1EE8120E00061DC5 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D97C7B1EE8120E00061DC5 /* UploadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,8 @@
 		A35B8F051EE0078A00BDBEED /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		A35B90331EE01AC100BDBEED /* ImageSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSelectViewController.m; sourceTree = "<group>"; };
 		A35B90351EE01AF600BDBEED /* ImageSelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageSelectViewController.h; sourceTree = "<group>"; };
+		A3D97C7A1EE8120E00061DC5 /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
+		A3D97C7B1EE8120E00061DC5 /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,8 @@
 				A35B90331EE01AC100BDBEED /* ImageSelectViewController.m */,
 				2F3DCFA81EE3EEBF0098AB91 /* SettingViewController.h */,
 				2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */,
+				A3D97C7A1EE8120E00061DC5 /* UploadManager.h */,
+				A3D97C7B1EE8120E00061DC5 /* UploadManager.m */,
 				2F43EA781EDB00990004D90A /* Main.storyboard */,
 				2F43EA7B1EDB00990004D90A /* Assets.xcassets */,
 				2F43EA7D1EDB00990004D90A /* LaunchScreen.storyboard */,
@@ -669,6 +674,7 @@
 				2F4AC6C01EE1B4FC002AA742 /* CTAssetsGridSelectedView.m in Sources */,
 				2F4AC6C21EE1B4FC002AA742 /* CTAssetsGridViewCell.m in Sources */,
 				2FA2EFFC1EDEF7580000B823 /* AFHTTPSessionManager.m in Sources */,
+				A3D97C7C1EE8120E00061DC5 /* UploadManager.m in Sources */,
 				2F4AC6CE1EE1B4FC002AA742 /* CTAssetThumbnailOverlay.m in Sources */,
 				A35B90341EE01AC100BDBEED /* ImageSelectViewController.m in Sources */,
 				2F4AC6C61EE1B4FC002AA742 /* CTAssetsNavigationController.m in Sources */,

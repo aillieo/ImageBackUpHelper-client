@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFHttpSessionManager.h"
 #import "ImageSelectViewController.h"
+#import "UploadManager.h"
 #import "SettingViewController.h"
 
 @interface HomeViewController () <ImageSelectViewControllerDelegate>
