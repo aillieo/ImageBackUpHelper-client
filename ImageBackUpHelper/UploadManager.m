@@ -19,12 +19,10 @@
     
     NSString *urlString = @"http://127.0.0.1:8080";
     
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setObject:@"name" forKey:@"name"];
-    
-    
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat =@"yyyyMMddHHmmssSSS";
+    //formatter.dateFormat =@"yyyyMMddHHmmssSSS";
+    formatter.dateFormat =@"yyyyMMddHHmmss";
     NSString *str = [formatter stringFromDate:[NSDate date]];
     NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
     
