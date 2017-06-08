@@ -80,13 +80,27 @@
     
     switch (section) {
         case 0:
-            title = @"http://127.0.0.1:8080";
+        {
+            title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            CGRect textFieldRect = cell.contentView.frame;
+            UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
+            [cell.contentView addSubview:textField];
+            //textField.center = cell.center;
+            textField.text = @"http://127.0.0.1:8080";
             break;
+        }
         case 1:
-            title = @"./";
+        {
+            title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            CGRect textFieldRect = cell.contentView.frame;
+            UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
+            [cell.contentView addSubview:textField];
+            //textField.center = cell.center;
+            textField.text = @"./";
             break;
+        }
         case 2:
             if(row == 0){
                 title = @"Use original name";
@@ -111,12 +125,28 @@
 }
 
 
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSInteger section   = indexPath.section;
-    //NSInteger row       = indexPath.row;
+    NSInteger section   = indexPath.section;
+    NSInteger row       = indexPath.row;
+    if(section!= 2)
+    {
+        return;
+    }
+    for(int i = 0 ; i < 3; i++)
+    {
+        UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section]];
+        if(i == row)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
 }
-*/
+
 
 @end
