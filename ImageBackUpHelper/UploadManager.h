@@ -14,7 +14,6 @@
 + (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData *)imageData
                                     completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock;
 
-+ (void)uploadAssets:(id)sender
-                      assetsToUpload:(NSArray *)assets;
++ (void)uploadAssets:(NSArray *)assets;
 
 @end
