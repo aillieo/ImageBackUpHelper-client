@@ -24,7 +24,7 @@
     
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat =@"yyyyMMddHHmmss";
+    formatter.dateFormat =@"yyyyMMddHHmmssSSS";
     NSString *str = [formatter stringFromDate:[NSDate date]];
     NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
     
@@ -52,37 +52,41 @@
 + (void)uploadAssets:(NSArray *)assets{
 
     
-    __block NSData *data;
-    PHAsset* asset = assets.firstObject;
-    if (asset.mediaType == PHAssetMediaTypeImage) {
-        PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-        options.version = PHImageRequestOptionsVersionCurrent;
-        options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-        options.synchronous = YES;
-        [[PHImageManager defaultManager] requestImageDataForAsset:asset
-                                                          options:options
-                                                    resultHandler:
-         ^(NSData *imageData,
-           NSString *dataUTI,
-           UIImageOrientation orientation,
-           NSDictionary *info) {
-             data = [NSData dataWithData:imageData];
-         }];
-    }
-    
-    
-    NSURLSessionUploadTask* uploadTask = [UploadManager uploadTaskWithImageData:data completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"upload failure %@", error);
-        } else {
-            NSLog(@"upload success %@", responseObject);
+    NSInteger count = assets.count;
+    for (int i = 0 ; i < count ; i++ ) {
+        
+        __block NSData *data;
+        
+        PHAsset* asset = assets[i];
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.version = PHImageRequestOptionsVersionCurrent;
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+            options.synchronous = YES;
+            [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                              options:options
+                                                        resultHandler:
+             ^(NSData *imageData,
+               NSString *dataUTI,
+               UIImageOrientation orientation,
+               NSDictionary *info) {
+                 data = [NSData dataWithData:imageData];
+             }];
         }
-    }];
-    
-    [uploadTask resume];
-    
+        
+        
+        NSURLSessionUploadTask* uploadTask = [UploadManager uploadTaskWithImageData:data completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
+            if (error) {
+                NSLog(@"upload failure %@", error);
+            } else {
+                NSLog(@"upload success %@", responseObject);
+            }
+        }];
+        
+        [uploadTask resume];
 
-
+        
+    }
     
 }
 
