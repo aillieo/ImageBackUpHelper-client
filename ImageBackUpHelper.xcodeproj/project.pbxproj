@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F3DCFAA1EE3EEBF0098AB91 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */; };
+		2F3DCFAA1EE3EEBF0098AB91 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DCFA91EE3EEBF0098AB91 /* SettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2F43EA711EDB00990004D90A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA701EDB00990004D90A /* main.m */; };
 		2F43EA741EDB00990004D90A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA731EDB00990004D90A /* AppDelegate.m */; };
 		2F43EA771EDB00990004D90A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43EA761EDB00990004D90A /* HomeViewController.m */; };

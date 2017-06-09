@@ -9,7 +9,7 @@
 #import "SettingViewController.h"
 #import "ImageSelectViewController.h"
 
-@interface SettingViewController ()
+@interface SettingViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -74,7 +74,7 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSString *title;
     
@@ -83,22 +83,26 @@
         {
             title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
-            //textField.center = cell.center;
             textField.text = @"http://127.0.0.1:8080";
+            textField.delegate = self;
+            [textField release];
             break;
         }
         case 1:
         {
             title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
-            //textField.center = cell.center;
             textField.text = @"./";
+            textField.delegate = self;
+            [textField release];
             break;
         }
         case 2:
@@ -124,8 +128,6 @@
     return cell;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger section   = indexPath.section;
@@ -140,6 +142,8 @@
         if(i == row)
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            [self.view endEditing:YES];
         }
         else
         {
@@ -148,5 +152,10 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return true;
+}
 
 @end
