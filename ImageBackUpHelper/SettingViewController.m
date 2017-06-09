@@ -87,8 +87,10 @@
             CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
-            textField.text = @"http://127.0.0.1:8080";
+            //textField.text = @"http://127.0.0.1:8080";
+            textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"url"];
             textField.delegate = self;
+            [textField setTag:0];
             [textField release];
             break;
         }
@@ -100,8 +102,10 @@
             CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
-            textField.text = @"./";
+            //textField.text = @"./";
+            textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"path"];
             textField.delegate = self;
+            [textField setTag:1];
             [textField release];
             break;
         }
@@ -155,6 +159,15 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    if([textField tag] == 0)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:@"url"];
+    }
+    else if([textField tag] == 1)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:@"path"];
+    }
+    
     return true;
 }
 

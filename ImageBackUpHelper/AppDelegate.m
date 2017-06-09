@@ -25,6 +25,14 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 */
+    
+    NSDictionary *defaultValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   @"./", @"path",
+                                   @"http://127.0.0.1:8080", @"url",
+                                   @"0", @"rename",
+                                   nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+    
     return YES;
 }
 
