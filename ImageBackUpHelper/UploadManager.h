@@ -8,12 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol UploadManagerDelegate
+
+- (void)updateTaskState:(NSInteger)totalTasks
+            finished:(NSInteger)finishedTasks
+            failed:(NSInteger)failedTasks;
+
+@end
+
 @interface UploadManager : NSObject
+<UploadManagerDelegate>
 
++(UploadManager*)defaultManager;
 
-+ (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData *)imageData
+@property (weak, nonatomic) id delegate;
+
+- (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData *)imageData
                                     completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock;
 
-+ (void)uploadAssets:(NSArray *)assets;
+- (void)uploadAssets:(NSArray *)assets;
 
 @end

@@ -13,8 +13,8 @@
 #import "UploadManager.h"
 #import "SettingViewController.h"
 
-@interface HomeViewController () <ImageSelectViewControllerDelegate>
-
+@interface HomeViewController ()
+<ImageSelectViewControllerDelegate,UploadManagerDelegate>
 @end
 
 @implementation HomeViewController
@@ -132,7 +132,9 @@
         return;
     }
     
-    [UploadManager uploadAssets:self.assets];
+    UploadManager* manager = [UploadManager defaultManager];
+    [manager setDelegate:self];
+    [manager uploadAssets:self.assets];
     
 }
 
@@ -145,6 +147,11 @@
 - (void)showState:(NSString *)stateString
 {
     _labelState.text = stateString;
+}
+
+- (void)updateTaskState:(NSInteger)totalTasks finished:(NSInteger)finishedTasks failed:(NSInteger)failedTasks
+{
+    NSLog(@"totalTasks = %ld, finishedTasks = %ld, failedTasks = %ld",totalTasks,finishedTasks,failedTasks);
 }
 
 @end

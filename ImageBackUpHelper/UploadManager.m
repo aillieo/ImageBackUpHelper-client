@@ -13,7 +13,59 @@
 
 @implementation UploadManager
 
-+ (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData*)imageData completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock {
+static UploadManager *defaultManager = nil;
+
+
++ (UploadManager*)defaultManager
+{
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        if(defaultManager == nil)
+        {
+            defaultManager = [[self alloc] init];
+        }
+    });
+    return defaultManager;
+}
+
+
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        if(defaultManager == nil)
+        {
+            defaultManager = [super allocWithZone:zone];
+        }
+    });
+    return defaultManager;
+}
+
+
+- (id)copy
+{
+    return self;
+}
+
+
+- (id)mutableCopy
+{
+    return self;
+}
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if(self)
+    {
+        // init your singleton here
+    }
+    return self;
+}
+
+
+- (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData*)imageData completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock {
 
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
@@ -47,7 +99,7 @@
 }
 
 
-+ (void)uploadAssets:(NSArray *)assets{
+- (void)uploadAssets:(NSArray *)assets{
 
     
     NSInteger count = assets.count;
@@ -73,11 +125,19 @@
         }
         
         
-        NSURLSessionUploadTask* uploadTask = [UploadManager uploadTaskWithImageData:data completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
+        NSURLSessionUploadTask* uploadTask = [[UploadManager defaultManager] uploadTaskWithImageData:data completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
             if (error) {
                 NSLog(@"upload failure %@", error);
+                if ([_delegate respondsToSelector:@selector(updateTaskState:finished:failed:)]) {
+                    [_delegate updateTaskState:6 finished:6 failed:6];
+                }
+                
             } else {
                 NSLog(@"upload success %@", responseObject);
+                if ([_delegate respondsToSelector:@selector(updateTaskState:finished:failed:)]) {
+                    [_delegate updateTaskState:6 finished:6 failed:6];
+                }
+                
             }
         }];
         
