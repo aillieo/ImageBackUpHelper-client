@@ -45,16 +45,16 @@
         
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:{
-                _labelState.text = @"no network";
+                [self showState : @"no network"];
                 break;
             }
             case AFNetworkReachabilityStatusReachableViaWiFi:{
-                _labelState.text = @"use wifi";
+                [self showState : @"use wifi"];
                 break;
             }
                 
             case AFNetworkReachabilityStatusReachableViaWWAN:{
-                _labelState.text = @"use cellular data";
+                [self showState : @"use cellular data"];
                 break;
             }
             default:
@@ -85,7 +85,7 @@
 
 - (IBAction)btnCheckPressed:(id)sender
 {
-    _labelState.text = @"connecting";
+    [self showState : @"connecting"];
     
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
@@ -97,10 +97,10 @@
         NSLog(@"GET downloadProgress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
         NSLog(@"GET success:%@", responseObject);
-        _labelState.text = @"connected";
+        [self showState : @"connected"];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"GET failure:%@", error);
-        _labelState.text = @"connect error";
+        [self showState : @"connect error"];
     }];
     
 }
@@ -139,7 +139,12 @@
 - (void)passAssets:(NSArray *)assets
 {
     self.assets = assets;
-    _labelState.text = [NSString stringWithFormat:@"Will upload %lu photo(s)",(unsigned long)self.assets.count];
+    [self showState:[NSString stringWithFormat:@"Will upload %lu photo(s)",(unsigned long)self.assets.count]];
+}
+
+- (void)showState:(NSString *)stateString
+{
+    _labelState.text = stateString;
 }
 
 @end
