@@ -9,6 +9,8 @@
 #import "SettingViewController.h"
 #import "ImageSelectViewController.h"
 
+#define cellOffsetX 16.0f
+
 @interface SettingViewController ()<UITextFieldDelegate>
 
 @end
@@ -74,17 +76,15 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSString *title = @"";
     
-    NSString *title;
+    CGRect textFieldRect = CGRectOffset(cell.contentView.frame,cellOffsetX,0);
     
     switch (section) {
         case 0:
         {
-            title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
             //textField.text = @"http://127.0.0.1:8080";
@@ -96,10 +96,8 @@
         }
         case 1:
         {
-            title = @"";
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            CGRect textFieldRect = cell.contentView.frame;
             UITextField* textField = [[UITextField alloc] initWithFrame:textFieldRect];
             [cell.contentView addSubview:textField];
             //textField.text = @"./";
@@ -110,18 +108,28 @@
             break;
         }
         case 2:
+        {
+            NSInteger rename = [[NSUserDefaults standardUserDefaults] integerForKey:@"rename"];
+            
             if(row == 0){
                 title = @"Use original name";
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             else if (row == 1){
                 title = @"Use number from 1";
-                cell.accessoryType = UITableViewCellAccessoryNone;
             }
             else if (row == 2){
                 title = @"Use date and time";
+            }
+            
+            if(rename == row)
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else
+            {
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }
+        }
             break;
         default:
             break;
@@ -148,6 +156,8 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             [self.view endEditing:YES];
+            [[NSUserDefaults standardUserDefaults] setInteger:i forKey:@"rename"];
+            NSLog(@"-----%f",cell.textLabel.frame.origin.x);
         }
         else
         {

@@ -29,7 +29,7 @@
     NSDictionary *defaultValues = [NSDictionary dictionaryWithObjectsAndKeys:
                                    @"./", @"path",
                                    @"http://127.0.0.1:8080", @"url",
-                                   @"0", @"rename",
+                                   [NSNumber numberWithInt:0], @"rename",
                                    nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     
