@@ -28,4 +28,9 @@
 
 - (void)uploadAssets:(NSArray *)assets;
 
+@property (assign, atomic) unsigned long totalTasks;
+@property (assign, atomic) unsigned long finishedTasks;
+@property (assign, atomic) unsigned long failedTasks;
+
+
 @end

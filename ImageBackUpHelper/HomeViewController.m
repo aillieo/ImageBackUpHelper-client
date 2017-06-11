@@ -152,6 +152,8 @@
 - (void)updateTaskState:(NSInteger)totalTasks finished:(NSInteger)finishedTasks failed:(NSInteger)failedTasks
 {
     NSLog(@"totalTasks = %ld, finishedTasks = %ld, failedTasks = %ld",totalTasks,finishedTasks,failedTasks);
+    
+    [self showState:[NSString stringWithFormat:@"finish %ld/ %ld, failed %ld",finishedTasks,totalTasks-failedTasks,failedTasks]];
 }
 
 @end

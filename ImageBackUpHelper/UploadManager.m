@@ -60,6 +60,11 @@ static UploadManager *defaultManager = nil;
     if(self)
     {
         // init your singleton here
+        
+        _totalTasks = 0;
+        _finishedTasks = 0;
+        _failedTasks = 0;
+
     }
     return self;
 }
@@ -102,8 +107,10 @@ static UploadManager *defaultManager = nil;
 - (void)uploadAssets:(NSArray *)assets{
 
     
-    NSInteger count = assets.count;
-    for (int i = 0 ; i < count ; i++ ) {
+    _totalTasks = assets.count;
+    _finishedTasks = 0;
+    _failedTasks = 0;
+    for (int i = 0 ; i < _totalTasks ; i++ ) {
         
         __block NSData *data;
         
@@ -128,14 +135,16 @@ static UploadManager *defaultManager = nil;
         NSURLSessionUploadTask* uploadTask = [[UploadManager defaultManager] uploadTaskWithImageData:data completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
             if (error) {
                 NSLog(@"upload failure %@", error);
+                _failedTasks += 1;
                 if ([_delegate respondsToSelector:@selector(updateTaskState:finished:failed:)]) {
-                    [_delegate updateTaskState:6 finished:6 failed:6];
+                    [_delegate updateTaskState:_totalTasks finished:_finishedTasks failed:_failedTasks];
                 }
                 
             } else {
+                _finishedTasks += 1;
                 NSLog(@"upload success %@", responseObject);
                 if ([_delegate respondsToSelector:@selector(updateTaskState:finished:failed:)]) {
-                    [_delegate updateTaskState:6 finished:6 failed:6];
+                    [_delegate updateTaskState:_totalTasks finished:_finishedTasks failed:_failedTasks];
                 }
                 
             }
