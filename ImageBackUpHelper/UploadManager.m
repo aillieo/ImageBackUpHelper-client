@@ -73,6 +73,7 @@ static UploadManager *defaultManager = nil;
 - (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData*)imageData completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock {
 
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.operationQueue.maxConcurrentOperationCount = 5;
     
     NSString *urlString = @"http://127.0.0.1:8080";
     

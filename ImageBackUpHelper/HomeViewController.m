@@ -25,6 +25,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    _progressBar.progress = 0;
+    _progressBar.hidden = YES;
     
     UIBarButtonItem *settingButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil)
@@ -136,6 +138,8 @@
     [manager setDelegate:self];
     [manager uploadAssets:self.assets];
     
+    _progressBar.hidden = NO;
+    
 }
 
 - (void)passAssets:(NSArray *)assets
@@ -154,6 +158,8 @@
     NSLog(@"totalTasks = %ld, finishedTasks = %ld, failedTasks = %ld",totalTasks,finishedTasks,failedTasks);
     
     [self showState:[NSString stringWithFormat:@"finish %ld/ %ld, failed %ld",finishedTasks,totalTasks-failedTasks,failedTasks]];
+    
+    [_progressBar setProgress:(float)finishedTasks/(float)(totalTasks-failedTasks)];
 }
 
 @end

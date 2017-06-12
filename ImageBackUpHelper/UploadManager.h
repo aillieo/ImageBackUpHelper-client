@@ -17,7 +17,7 @@
 @end
 
 @interface UploadManager : NSObject
-<UploadManagerDelegate>
+//<UploadManagerDelegate>
 
 +(UploadManager*)defaultManager;
 

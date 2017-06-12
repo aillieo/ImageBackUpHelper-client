@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelState;
 
+@property (weak, atomic) IBOutlet UIProgressView *progressBar;
+
 @property (nonatomic, copy) NSArray *assets;
 
 @end
