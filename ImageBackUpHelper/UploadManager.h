@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol UploadManagerDelegate
+@protocol UploadManagerDelegate <NSObject>
 
 - (void)updateTaskState:(NSInteger)totalTasks
             finished:(NSInteger)finishedTasks
@@ -17,11 +17,11 @@
 @end
 
 @interface UploadManager : NSObject
-//<UploadManagerDelegate>
+
 
 +(UploadManager*)defaultManager;
 
-@property (weak, nonatomic) id delegate;
+@property (weak, nonatomic) id <UploadManagerDelegate>delegate;
 
 - (NSURLSessionUploadTask*)uploadTaskWithImageData:(NSData *)imageData
                                     completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock;
